@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<meta charset="utf-8" />	
+<title th:utext="#{label.pages.home.title}">Title</title>	
+<!-- ================== BEGIN core-css ================== -->	
+<link  th:href="@{/assets/css/vendor.min.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/assets/css/app.min.css}" type="text/css" rel="stylesheet" />
+<!-- ================== END core-css ================== -->
+</head>
+<body class='pace-top'>		
+	<!-- BEGIN #app -->
+	<div id="app" class="app app-without-header text-center">
+		<div class="coming-soon">
+			<div class="flex-1">				
+        <h1 id="error" class="alert alert-danger" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]}" th:utext="#{message.logoutError}">error</h1>
+                
+        <h1 id="success" class="" th:if="${param.logSucc}" th:utext="#{message.logoutSucc}"> success</h1>
+        <a  th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
+        </div>
+        
+        </div>
+        <div th:include="theme/theme_util :: theme_util"></div>	
+    </div>
+</body>
+
+<!-- ================== BEGIN core-js ================== -->
+	<script th:src="@{/assets/js/vendor.min.js}"></script>
+	<script th:src="@{/assets/js/app.min.js}"></script>
+	<!-- ================== END core-js ================== -->
+	
+	<!-- ================== BEGIN page-js ================== -->
+	<script th:src="@{/assets/plugins/kbw-countdown/dist/js/jquery.plugin.js}"></script>
+	<script th:src="@{/assets/plugins/kbw-countdown/dist/js/jquery.countdown.js}"></script>
+	<script th:src="@{/assets/js/demo/page-coming-soon.demo.js}"></script>
+	<!-- ================== END page-js ================== -->
+
+</html>

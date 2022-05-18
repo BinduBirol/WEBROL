@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Issues</title>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="assets/css/app.min.css" rel="stylesheet" />
+	<link href="assets/css/netlit_ems.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+	
+	<!-- ================== BEGIN page-css ================== -->
+	<link href="assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+	<link href="assets/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+	<link href="assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+	<!-- ================== END page-css ================== -->
+	<link href="assets/plugins/select-picker/dist/picker.min.css" rel="stylesheet" />
+	
+	
+
+</head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		<div th:include="theme/header :: dynamicheaderFragment"></div>
+		<div th:include="theme/sidenav :: sidenav"></div>		
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content">
+			<!-- BEGIN container -->
+			<div class="container">
+				<!-- BEGIN row -->
+				<div class="row justify-content-center">
+					<!-- BEGIN col-10 -->
+					<div >
+						<!-- BEGIN row -->
+						<div class="row">
+							<!-- BEGIN col-9 -->
+							
+								<ul class="breadcrumb">									
+									<li class="breadcrumb-item"><a href="#">INTERNAL COMMUNICATION</a></li>
+									<li class="breadcrumb-item active">ISSUES</li>
+								</ul>
+								
+								<h1 class="page-header">
+									Issues
+								</h1>
+								
+								<hr class="mb-4" />								
+
+								<div class="modal fade" id="docomplaint">
+								  <div class="modal-dialog modal-xl">
+								    <div class="modal-content">
+								    <div class="modal-header">
+								        <h5 class="modal-title">CREATE A NEW ISSUE</h5>
+								        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								      </div>
+								      <div th:include="ems/content/addComlaintsContent :: addComlaintsContent"></div>
+								    </div>
+								  </div>
+								</div>
+								
+								<div class="modal modal-cover fade" id="">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div th:include="ems/content/addComlaintsContent :: addComlaintsContent"></div>
+								    </div>
+								  </div>
+								</div>
+							
+
+							<hr/>
+							<!-- BEGIN #datatable -->
+								<div id="datatable" class="mb-5">
+									<div class="card">
+									<div class="card-header">
+										<button type="button" class="btn btn-outline-theme btn-sm" data-bs-toggle="modal" data-bs-target="#docomplaint">Create A New Issue</button>
+									</div>
+										<div class="card-body">
+											<table id="datatableDefault" class="table text-nowrap w-100">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>User</th>
+														<th>Title</th>
+														<th>Created</th>
+														<th>Updated</th>
+														<th>Assigned TO</th>
+														<th>Status</th>	
+														<th><i class="fa fa-comment"></i></th>													
+														<th>Options</th>																											
+													</tr>
+												</thead>
+												<tbody>				
+													
+													<tr th:each="cmp,iterator : ${complaints}">
+														<td th:text="${iterator.index+1}">57</td>
+														<td ><a class="text-white" href="#" th:emp-id="${cmp.empid}" th:text="${cmp.empname}" onclick="viewEmlpoyee(this);"></a></td>
+														<td><a th:text="${cmp.title}" href="#" th:cmp-id="${cmp.id}" onclick="viewcomplaint(this);" ></a></td>
+														<td th:text="${cmp.created}"></td>
+														<td th:text="${cmp.updated}"></td>
+														<td th:text="${cmp.assign_to}"></td>
+														<td th:text="${cmp.status}">27</td>	
+														<th th:text="${cmp.comments.size}"></th>													
+														<td>
+														<a href="#" data-bs-toggle="dropdown" class=" text-opacity-50">
+														<i
+																class="fa fa-ellipsis-h"></i></a>
+															<div class="dropdown-menu dropdown-menu-end">
+																<a href="#" th:cmp-id="${cmp.id}" onclick="viewcomplaint(this);"  class="dropdown-item">View</a> 
+																<a onclick="editcomplaint(this);" th:cmp-id="${cmp.id}" href="#"
+																  class="dropdown-item">Edit</a> 
+																<a th:href="@{/deleteIssue(cmpid=${cmp.id})}" class="dropdown-item">Delete</a>
+															</div>
+														
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										
+									</div>
+								</div>
+								<!-- END #datatable -->
+								
+								
+							</div>
+							<!-- END col-9-->
+							<!-- BEGIN col-3 -->
+							
+							<!-- END col-3 -->
+						</div>
+						<!-- END row -->
+					</div>
+					<!-- END col-10 -->
+				</div>
+				<!-- END row -->				
+
+			<div class="modal fade" id="viewEmployee">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content m-cnt">...</div>
+				</div>
+			</div>
+
+			<!-- END container -->
+		<!-- END #content -->
+		
+		<div th:include="theme/theme_util :: theme_util"></div>	
+		
+		
+		
+	</div>
+	<!-- END #app -->
+		<script type="text/javascript">
+			function viewEmlpoyee(z) {
+				$empid = $(z).attr("emp-id");
+				//$('#viewEmployee').modal('show');
+
+				$.ajax({
+					url : "viewEmployee?empid=" + $empid,
+					type : 'GET',
+					success : function(data) {
+						$('.m-cnt').html(data);
+						$('#viewEmployee').modal('show');
+					},
+					error : function(xhr, desc, err) {
+						$('.m-cnt').html(xhr.responseText);
+						$('#viewEmployee').modal('show');
+
+					}
+				});
+				//alert($empid);
+
+			}
+			function viewcomplaint(z) {
+				$cmpid = $(z).attr("cmp-id");
+				//$('#viewEmployee').modal('show');
+
+				$.ajax({
+					url : "viewcomplaint?cmpid=" + $cmpid,
+					type : 'GET',
+					success : function(data) {
+						$('.m-cnt').html(data);
+						$('#viewEmployee').modal('show');
+					},
+					error : function(xhr, desc, err) {
+						$('.m-cnt').html(xhr.responseText);
+						$('#viewEmployee').modal('show');
+
+					}
+				});
+				//alert($empid);
+
+			}
+			
+			function editcomplaint(z) {
+				$cmpid = $(z).attr("cmp-id");
+				//$('#viewEmployee').modal('show');
+
+				$.ajax({
+					url : "editcomplaint?cmpid=" + $cmpid,
+					type : 'GET',
+					success : function(data) {
+						$('.m-cnt').html(data);
+						$('#viewEmployee').modal('show');
+					},
+					error : function(xhr, desc, err) {
+						$('.m-cnt').html(xhr.responseText);
+						$('#viewEmployee').modal('show');
+
+					}
+				});
+				//alert($empid);
+
+			}
+			function previewFile(input){
+		        var file = $("input[type=file]").get(0).files[0]; 
+		        if(file){
+		            var reader = new FileReader(); 
+		            reader.onload = function(){
+		                $("#previewImg").attr("src", reader.result);
+		            } 
+		            reader.readAsDataURL(file);
+		        }
+		    }
+			
+			function previewCommentFile(input){
+		        var file = $("#commentImage").get(0).files[0]; 
+		        if(file){
+		            var reader = new FileReader(); 
+		            reader.onload = function(){
+		                $("#previewCommentImg").attr("src", reader.result);
+		            } 
+		            reader.readAsDataURL(file);
+		        }
+		    }
+		</script>
+
+		<!-- ================== BEGIN core-js ================== -->
+	<div th:include="theme/footer::staticFooter"></div>
+	<!-- ================== END core-js ================== -->
+	
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="assets/plugins/select-picker/dist/picker.min.js"></script>
+	<script src="assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+	<script src="assets/js/demo/highlightjs.demo.js"></script>
+	<script src="assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+	<script src="assets/plugins/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+	<script src="assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+	<script src="assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
+	<script src="assets/js/demo/table-plugins.demo.js"></script>
+	<script src="assets/js/demo/sidebar-scrollspy.demo.js"></script>
+	<!-- ================== END page-js ================== -->
+</body>
+</html>

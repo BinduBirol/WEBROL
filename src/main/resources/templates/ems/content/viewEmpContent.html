@@ -1,0 +1,257 @@
+<div th:fragment="viewEmpContent">
+				<!-- BEGIN profile -->
+				<div class="profile">
+				
+					<!-- BEGIN profile-container -->
+					<div class="profile-container">
+						<!-- BEGIN profile-sidebar -->
+						<div class="profile-sidebar">
+							<div class="desktop-sticky-top ">
+								<div class="text-center">
+									<img class="profile-img img-thumbnail"
+										th:src="*{'data:image/jpeg;base64,'+{userdtl.emp_image_encoded}}"
+										alt="User Image" />			
+															
+								
+								<!-- profile info -->
+								<h4>[[${userdtl.first_name}]] [[${userdtl.last_name}]]</h4>
+								<div th:text="${userdtl.designation}"
+									class="mb-3 text-white text-opacity-50 fw-bold mt-n2">@johnsmith</div>
+									</div>
+								<p>[[${userdtl.employee_Type}]] employee.<br/>Contract remaining period: [[${userdtl.contact_remaining_period}]]</p>
+								
+								<div class="mb-1">
+									<i class="fa fa-id-card fa-fw text-white text-opacity-50"></i>
+									Employee ID: 
+									 <span th:text="${userdtl.empid}"></span> 
+								</div>
+								
+								<div class="mb-1">
+									<i class="fa fa-registered fa-fw text-white text-opacity-50"></i> 
+									NETLIT EMS User: <span th:text="${userdtl.status}"></span> 
+								</div>
+								
+
+								<div class="mb-1" >
+									<i class="fa fa-envelope fa-fw text-white text-opacity-50"></i>
+									<span th:text="${userdtl.email}"></span>
+								</div>
+								<div class="mb-1">
+									<i class="fa fa-phone fa-fw text-white text-opacity-50"></i> <span
+										th:text="${userdtl.phone}"></span>
+								</div>
+
+								<div class="mb-3">
+									<i
+										class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i>
+									<span th:text="${userdtl.address_full}"></span>
+								</div>
+
+
+								<hr class="" />
+								<!-- 
+								<div
+									style="display: flex; justify-content: flex-end; padding: 5px;">
+									<a href="#" data-toggle="card-expand"
+										class=" text-white text-opacity-50 text-decoration-none"><i
+										class="bi bi-fullscreen"></i></a>
+
+								</div>
+								 -->
+
+							</div>
+						</div>
+
+						<!-- BEGIN profile-content -->
+						<div class="profile-content">
+							<ul class="nav nav-tabs">
+								<li class="nav-item me-1"><a href="#home"
+									class="nav-link active" data-bs-toggle="tab">Employment Info</a></li>
+								<li class="nav-item me-1"><a href="#personal"
+									class="nav-link" data-bs-toggle="tab">Personal Info</a></li>
+								<li class="nav-item me-1"><a href="#bank"
+									class="nav-link " data-bs-toggle="tab">Account Info</a></li>
+								<li class="nav-item me-1"><a href="#docs"
+									class="nav-link " data-bs-toggle="tab">Documents</a></li>
+							</ul>
+							
+							<div class="tab-content pt-3">
+									<div class="tab-pane fade show active" id="home">
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>Full Name:</td>
+													<td th:text="${userdtl.full_name}"></td>
+												</tr>
+												
+												<tr>
+													<td>Work Phone Number:</td>
+													<td th:text="${userdtl.phone}"></td>
+												</tr>
+												
+												<tr>
+													<td>Work Email:</td>
+													<td th:text="${userdtl.email}"></td>
+												</tr>
+												
+												<tr>
+													<td>Designation:</td>
+													<td th:text="${userdtl.designation}"></td>
+												</tr>
+												
+												<tr>
+													<td>Contract Start:</td>
+													<td th:text="${userdtl.contract_start}"></td>
+												</tr>
+												
+												<tr>
+													<td>Contract End:</td>
+													<td th:text="${userdtl.contract_end}"></td>
+												</tr>												
+												
+												
+												<tr>
+													<td>Workspace:</td>
+													<td th:text="${userdtl.workspace}" ></td>
+												</tr>									
+												
+												
+												<tr>
+													<td>Nearest Chief:</td>
+													<td th:text="${userdtl.nearest_chief}"></td>
+												</tr>
+												
+												<tr>
+													<td>Employee Type:</td>
+													<td th:text="${userdtl.employee_Type}"></td>
+												</tr>
+												
+												<tr>
+													<td>Added By:</td>
+													<td th:text="${userdtl.added_by}"></td>
+												</tr>
+												
+												<tr>
+													<td>Created on:</td>
+													<td th:text="${userdtl.created}"></td>
+												</tr>
+												
+												<tr>
+													<td>Updated on:</td>
+													<td th:text="${userdtl.updated}"></td>
+												</tr>
+												
+											</table>
+										
+										</div>
+	
+									</div>
+									<div class="tab-pane fade" id="personal">
+										
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>First Name:</td>
+													<td th:text="${userdtl.first_name}"></td>
+												</tr>
+												<tr>
+													<td>Last Name:</td>
+													<td th:text="${userdtl.last_name}"></td>
+												</tr>
+												<tr>
+													<td>Address:</td>
+													<td th:text="${userdtl.address_full}"></td>
+												</tr>
+												<tr>
+													<td>Evening Phone:</td>
+													<td th:text="${userdtl.phone_eve}"></td>
+												</tr>
+												<tr>
+													<td>Private Email:</td>
+													<td th:text="${userdtl.private_email}"></td>
+												</tr>
+												<tr>
+													<td>Closest Relative Full Description:</td>
+													<td th:text="${userdtl.closest_relative_full}"></td>
+												</tr>
+												<tr>
+													<td>Social Security Number:</td>
+													<td th:text="${userdtl.social_security_number}"></td>
+												</tr>
+												<tr>
+													<td>Gender</td>
+													<td th:text="${userdtl.sex}"></td>
+												</tr>
+												
+											</table>
+										</div>
+									
+										
+									</div>
+									
+									<div class="tab-pane fade" id="bank">
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>Bank Name:</td>
+													<td th:text="${userdtl.bank_name}"></td>
+												</tr>
+												
+												<tr>
+													<td>Account Number:</td>
+													<td th:text="${userdtl.account_number}"></td>
+												</tr>
+												
+												<tr>
+													<td>Clearing Number:</td>
+													<td th:text="${userdtl.clearing_number}"></td>
+												</tr>
+												
+												<tr>
+													<td>Table Tax:</td>
+													<td th:text="${userdtl.table_tax}" ></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									
+									<div class="tab-pane fade" id="docs">
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>CV</td>
+													<td><a class="btn btn-link" th:if="${userdtl.doc_cv != null}" th:href="|download/user?fileId=cv&userid=${userdtl.empid}|">Download</a></td>
+												</tr>
+												
+												<tr>
+													<td>Certificate</td>
+													<td><a class="btn btn-link" th:if="${userdtl.doc_certificate != null}" th:href="|download/user?fileId=crt&userid=${userdtl.empid}|">Download</a></td>
+												</tr>
+												
+												<tr>
+													<td>ID copy</td>
+													<td><a class="btn btn-link" th:if="${userdtl.doc_id != null}" th:href="|download/user?fileId=id&userid=${userdtl.empid}|">Download</a></td>
+												</tr>
+												
+												<tr>
+													<td>Other Documents</td>
+													<td><a class="btn btn-link" th:if="${userdtl.doc_others != null}" th:href="|download/user?fileId=others&userid=${userdtl.empid}|">Download</a></td>
+												</tr>
+											
+											</table>
+										</div>
+									</div>
+									
+								</div>
+							
+						</div>
+
+					</div>
+					<!-- END profile-sidebar -->
+
+
+
+				</div>
+			</div>
+			
+

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>NETLIT | ADD EMPLOYEE</title>
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<!-- ================== BEGIN core-css ================== -->
+<link href="assets/css/vendor.min.css" rel="stylesheet" />
+<link href="assets/css/app.min.css" rel="stylesheet" />
+<link href="assets/css/netlit_ems.css" rel="stylesheet" />
+<!-- ================== END core-css ================== -->
+
+<!-- ================== BEGIN page-css ================== -->
+<link href="assets/plugins/tag-it/css/jquery.tagit.css" rel="stylesheet" />
+<link
+	href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/bootstrap-slider/dist/css/bootstrap-slider.min.css"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/blueimp-file-upload/css/jquery.fileupload.css"
+	rel="stylesheet" />
+<link href="assets/plugins/summernote/dist/summernote-lite.css"
+	rel="stylesheet" />
+<link href="assets/plugins/spectrum-colorpicker2/dist/spectrum.min.css"
+	rel="stylesheet" />
+<link href="assets/plugins/select-picker/dist/picker.min.css"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/jquery-typeahead/dist/jquery.typeahead.min.css"
+	rel="stylesheet" />
+<!-- ================== END page-css ================== -->
+
+</head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">
+		<div th:include="theme/header :: dynamicheaderFragment"></div>
+		<div th:include="theme/sidenav :: sidenav"></div>
+
+		<!-- BEGIN #content -->
+		<div th:include="ems/content/addEmpContent :: addEmpContent"></div>
+		<!-- END #content -->
+
+		<div th:include="theme/theme_util :: theme_util"></div>
+	</div>
+	<!-- END #app -->
+
+
+
+	<!-- ================== BEGIN core-js ================== -->
+	<div th:include="theme/footer::staticFooter"></div>
+	<!-- ================== END core-js ================== -->
+
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="assets/plugins/jquery-migrate/dist/jquery-migrate.min.js"></script>
+	<script
+		src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="assets/plugins/moment/min/moment.min.js"></script>
+	<script
+		src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script
+		src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script
+		src="assets/plugins/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+	<script
+		src="assets/plugins/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
+	<script
+		src="assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+	<script src="assets/plugins/select-picker/dist/picker.min.js"></script>
+	<script src="assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+	<script src="assets/js/demo/highlightjs.demo.js"></script>
+	<script src="assets/js/demo/form-plugins.demo.js"></script>
+	<script src="assets/js/demo/sidebar-scrollspy.demo.js"></script>
+	<!-- ================== END page-js ================== -->
+	<script src="assets/js/netlit_ems.js"></script>
+	<script type="text/javascript">
+		function doToast() {
+			showprocessview();
+		}
+
+		$("#addEmployeeForm").submit(
+				function(event) {
+					showprocessview();
+					event.preventDefault();
+					$.ajax({
+						url : $(this).attr("action"),
+						type : $(this).attr("method"),
+						data : new FormData(this),
+						processData : false,
+						contentType : false,
+						success : function(data, status) {
+							hideprocessview();
+							$('.toast-header .title').html("Response");
+							$('.toast-body .toast-message').html(data);
+							$('.toast').toast('show');
+							if (data.includes("Successfully") == true) {
+								$(':input', '#addEmployeeForm').not(
+										':button, :submit, :reset, :hidden')
+										.val('').prop('checked', false).prop(
+												'selected', false);
+							}
+							$("html, body").animate({
+								scrollTop : 0
+							}, "slow");
+							return false;
+						},
+						error : function(xhr, desc, err) {
+							hideprocessview();
+							$('.toast-header .title').html("Error");
+							$('.toast-body .toast-message').html(
+									xhr.responseText);
+							$('.toast').toast('show');
+							$("html, body").animate({
+								scrollTop : 0
+							}, "slow");
+							return false;
+
+						}
+					});
+
+				});
+
+		function previewFile(input) {
+			var file = $("input[type=file]").get(0).files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function() {
+					$("#previewImg").attr("src", reader.result);
+				}
+				reader.readAsDataURL(file);
+			}
+		}
+	</script>
+</body>
+</html>

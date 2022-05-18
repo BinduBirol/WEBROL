@@ -1,0 +1,459 @@
+<div th:fragment="addEmpContent">
+<div id="content" class="app-content">
+			<!-- BEGIN container -->
+			<div class="container">
+				<!-- BEGIN row -->
+				<div class="row justify-content-center">
+					<!-- BEGIN col-10 -->
+					<div class="col-xl-10">
+						<!-- BEGIN row -->
+						<div class="row">
+							<!-- BEGIN col-9 -->
+							<div class="col-xl-9">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">EMPLOYEE MANAGEMENT</a></li>
+									<li class="breadcrumb-item active">ADD EMPLOYEE</li>
+								</ul>
+								
+								<h1 class="page-header">
+									Insert Employee Information
+								</h1>
+								<form id="addEmployeeForm" action="addEmployeeDo" method="post" enctype='multipart/form-data'>
+								<hr class="mb-4" />
+								
+								<!-- BEGIN #user_info -->
+								
+								
+								
+								
+								<div id="employment" class="mb-5">
+									<h4>Employment Information <i class="fa-solid fa-star text-danger"></i></h4>									
+									<div class="card">
+										<div class="card-body pb-2">
+
+										<div class="row mb-3">
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+												<label>Contact</label>
+												<div class="input-group " id="">
+																<input  name="contract_start" required="required"  type="text" class="form-control datepicker-default"  placeholder="start date" />
+																<span class="input-group-text">to</span>
+																<input name="contract_end" type="text" class="form-control datepicker-default"  placeholder="end date" />
+															</div>
+												</div>
+											</div>
+											
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+												<label>Full Name</label> <input name="full_name"
+														type="text" class="form-control" required="required"
+														placeholder="Enter Full Name">
+												</div>
+											</div>
+										</div>
+
+
+										<div class="row mb-3">
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>Select Designation</label> <select name="designation"
+														required="required" class="form-select" id="slct_role">
+														<option value="">Select Designation</option>
+														<option th:each="roles : ${roles}" th:value="${roles.name}"
+															th:text="${roles.name}"></option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>Workspace</label> <input name="workspace"
+														type="text" class="form-control" required="required"
+														placeholder="Enter Workspace">
+												</div>
+											</div>
+										</div>
+										
+										<div class="row mb-3">
+							              <div class="col-12 col-sm-6">
+							                <div class="form-group">
+							                  <label>Work Email</label>
+							                 <input name="email" type="email" class="form-control"  required="required" placeholder="Enter Work Email">
+							                </div>
+							                <!-- /.form-group -->
+							              </div>
+							              <!-- /.col -->
+							              <div class="col-12 col-sm-6">
+							                <div class="form-group">
+							                  <label>Nearest Chief</label>
+							                  <input name="nearest_chief" type="text" class="form-control"  required="required" placeholder="Enter Nearest Chief">
+							                </div>
+							                <!-- /.form-group -->
+							              </div>
+							              <!-- /.col -->
+							            </div>
+							            
+							            <div class="row mb-3">
+								              <div class="col-12 col-sm-6">
+								                <div class="form-group">
+								                  <label>Employee Type</label> 
+								                  
+								                  <select name="employee_Type"
+														required="required" class="form-select">
+														<option value="">Select Type</option>
+														<option value="Full Time">Full Time</option>
+														<option value="Part Time">Part Time</option>
+														<option value="Contractual">Contractual</option>
+
+													</select>
+
+
+												</div>
+								                <!-- /.form-group -->                
+								              </div>
+								              <!-- /.col -->
+								               <div class="col-12 col-sm-6">
+								                <div class="form-group">
+								                  <label>Work Phone</label>
+								                 <input name="phone" type="tel" class="form-control"  required="required" placeholder="Enter Work Phone">
+								                </div>
+								                <!-- /.form-group -->                
+								              </div>
+								              <!-- /.col -->
+								            </div>
+
+									</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										<div class="hljs-container rounded-bottom">
+										<small>
+											All the employment information is required!!
+										</small>
+										</div>
+									</div>
+								</div>
+								<div id="user_info" class="mb-5">
+									<h4>EMS Info <i class="fa-solid fa-star text-danger"></i></h4>									
+									<div class="card">
+										<div class="card-body pb-2">
+											<div class="row mb-3">													
+													
+													
+													
+													<div class="col-xl-6">
+														 <div class="form-group">
+											                  <label>Select Role</label>
+											                        <select name="roleid" required="required" class="form-select"  id="slct_role">
+																	    <option value="">Select Role</option>
+																	    <option th:each="roles : ${roles}" th:value="${roles.id}" th:text="${roles.name}"></option>
+																    </select>																   
+														</div>
+													</div>	
+												</div>
+												
+										</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										<div class="hljs-container rounded-bottom"><small>Set role of the employee to access the software permissions</small>
+											                
+										</div>
+									</div>
+								</div>
+								
+								
+								<div id="documents" class="mb-5">
+									<h4>Documents </h4>									
+									<div class="card">
+										<div class="card-body pb-2">
+										
+										<div class="row mb-3">
+													
+													<div class="col-12 col-sm-12">
+										                <div class="form-group">
+															<label>Employee Image</label>							
+															<div class="text-center">
+																<img   class="rounded-circle mx-auto d-block col-12 col-sm-6" id="previewImg"  src="" alt="Select an Image">
+															</div>															
+															<hr/>
+															<input accept="image/*" name="emp_image_m"  class="form-control" type="file" onchange="previewFile(this);"/>															 
+															
+										                </div>   
+										                 
+										              </div>								
+													
+														
+												</div>
+										
+										<div class="row mb-3">
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>CV </label> <br/>
+                 									<input name="doc_m_cv"  accept="application/pdf"  type="file" class="form-control"  placeholder="Enter CV">
+                
+												</div>
+											</div>
+											
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>Certificate </label> <br/>
+                  									<input name="doc_m_crt"  accept="application/pdf"  type="file" class="form-control"   placeholder="Enter Certificate copy">
+                
+												</div>
+											</div>
+											
+										</div>
+										
+										<div class="row mb-3">
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>ID copy</label> <br/>
+                  									<input name="doc_m_id"  accept="image/jpeg,image/png,application/pdf"  type="file" class="form-control"   placeholder="Enter ID copy">
+                
+												</div>
+											</div>
+											
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<label>Others </label> <br/>
+                 									<input name="doc_m_others"  accept="application/pdf"  type="file" class="form-control"  placeholder="Enter CV">
+                
+												</div>
+											</div>
+											
+										</div>
+
+
+									</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										<div class="hljs-container rounded-bottom">										
+											<small class="text-warning">Only .pdf file allowed for CV and Certificates. Photo can be uploaded as ID copy.</small>
+											         
+										</div>
+									</div>
+								</div>
+								
+								<div id="personal" class="mb-5">
+									<h4>Employee Personal Information</h4>									
+									<div class="card">
+										<div class="card-body pb-2">
+										
+										
+										
+										
+										
+		<div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>First Name</label>
+                 <input name="first_name" type="text" class="form-control"   placeholder="Enter First Name">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input name="last_name" type="text" class="form-control"   placeholder="Enter Last Name">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            
+            
+            <div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Private Email</label>
+                 <input name="private_email" type="email" class="form-control"   placeholder="Enter Private Email">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Closest Relative Full Description</label>
+                  <input name="closest_relative_full" type="text" class="form-control"   placeholder="Enter Closest Relative Full Description">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            
+             <div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Full Address</label>
+                 <input name="address_full"  type="text" class="form-control"   placeholder="Enter Full Address">
+                </div>
+                <!-- /.form-group -->                
+              </div>
+              <!-- /.col -->
+               <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Evening Phone</label>
+                 <input name="phone_eve" type="tel" class="form-control"   placeholder="Enter Evening Phone">
+                </div>
+                <!-- /.form-group -->                
+              </div>
+              <!-- /.col -->
+            </div>
+            
+             <div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Social Security Number</label>
+                 <input name="social_security_number" type="text" class="form-control"   placeholder="YYYYMMDD-XXXX">
+                </div>
+                <!-- /.form-group -->                
+              </div>
+              <!-- /.col -->
+               <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Gender</label>
+                 <select name="sex" class="form-select" >
+                 	<option value="">Select</option>                 	
+                 	<option value="Male">Male</option>
+                 	<option value="Female">Female</option>
+                 	<option value="Other">Other</option>
+                 	
+                 </select>
+                </div>
+                <!-- /.form-group -->                
+              </div>
+              <!-- /.col -->
+            </div>
+										</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										<div class="hljs-container rounded-bottom">
+										<small>
+											Employee can add/edit personal information later.
+										</small>
+										</div>
+									</div>
+								</div>
+								
+								<div id="account" class="mb-5">
+									<h4>Employee Account Information</h4>									
+									<div class="card">
+										<div class="card-body pb-2">
+											<div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Bank Name</label>
+                 <input name="bank_name" type="text" class="form-control"  placeholder="Enter Bank Name">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Account Number</label>
+                  <input name="account_number" type="text" class="form-control"   placeholder="Enter Bank Account Number">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            
+            
+            <div class="row mb-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Clearing Number</label>
+                 <input name="clearing_number" type="text" class="form-control"  placeholder="Enter Clearing Number">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Table Tax</label>
+                  <input name="table_tax" type="text" class="form-control"   placeholder="Enter Table Tax">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            
+										</div>
+										<div class="card-arrow">
+											<div class="card-arrow-top-left"></div>
+											<div class="card-arrow-top-right"></div>
+											<div class="card-arrow-bottom-left"></div>
+											<div class="card-arrow-bottom-right"></div>
+										</div>
+										<div class="hljs-container rounded-bottom"><small>
+											Employee can add/edit Account information later.
+										</small>
+										</div>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+								<div class="col-12 col-sm-3">
+										<button class="btn btn-dark d-block w-100 fw-500 mb-3 "  onclick="doToast();" disabled="disabled"  type="button">Draft</button>
+									</div>
+									<div class="col-12 col-sm-6">
+										<button  class="btn btn-success d-block w-100 fw-500 mb-3 processview"  type="submit">Save Information</button>
+									</div>
+									<div class="col-12 col-sm-3">
+										<input class="btn btn-danger d-block w-100 fw-500 mb-3" type="reset"/>										
+									</div>
+								</div>
+
+							</form>
+								
+							</div>
+							<!-- END col-9-->
+							<!-- BEGIN col-3 -->
+							<div class="col-xl-3">
+								<!-- BEGIN #sidebar-bootstrap -->
+								<nav id="sidebar-bootstrap" class="navbar navbar-sticky d-none d-xl-block">
+									<nav class="nav text-nowrap">
+										
+										<a class="nav-link" href="#employment" data-toggle="scroll-to">Employment Info</a>
+										<a class="nav-link" href="#user_info" data-toggle="scroll-to">EMS Info</a>
+										<a class="nav-link" href="#documents" data-toggle="scroll-to">Documents</a>
+										<a class="nav-link text-nowrap" href="#personal" data-toggle="scroll-to">Personal Info</a>										
+										<a class="nav-link" href="#account" data-toggle="scroll-to">Account Info & Save buttons</a>
+										
+																				
+									</nav>
+								</nav>
+								<!-- END #sidebar-bootstrap -->
+							</div>
+							<!-- END col-3 -->
+						</div>
+						<!-- END row -->
+					</div>
+					<!-- END col-10 -->
+				</div>
+				<!-- END row -->
+			</div>
+			<!-- END container -->
+		</div>
+		
+	<script>
+		
+	</script>
+</div>
+	

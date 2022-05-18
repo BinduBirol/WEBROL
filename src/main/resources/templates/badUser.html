@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="theme/header :: staticheaderFragment"></head>
+<body class='pace-top'>
+	<!-- BEGIN #app -->
+	<div id="app" class="app app-full-height app-without-header">
+		<!-- BEGIN error -->
+		<div class="error-page">
+			<!-- BEGIN error-page-content -->
+			<div class="error-page-content">
+				<div class="card mb-5 mx-auto" style="">
+					<div class="card-body">
+						<div class="card">
+							<div class="error-code">Oops..!</div>
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+				</div>
+				<h1  th:utext="#{label.badUser.title}">Oops!</h1> 
+				<h3 th:utext="${message}" >We can't seem to find the page you're looking for</h3>
+				
+				<div th:if="${expired}">
+<br/>
+
+<button class="btn btn-outline-theme px-3 rounded-pill" onclick="resendToken()"><i class="fa fa-refresh me-1 ms-n1"></i>Resend Token</button>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script th:inline="javascript">
+var serverContext = [[@{/}]];
+
+function resendToken(){
+	var token = [[${token}]];
+    $.get(serverContext + "user/resendRegistrationToken?token="+token, function(data){
+        window.location.href = serverContext +"login?message=" + data.message;
+    })
+    .fail(function(data) {
+        if(data.responseJSON.error.indexOf("MailError") > -1)
+        {
+            window.location.href = serverContext + "emailError.html";
+        }
+        else{
+            window.location.href = serverContext + "login?message=" + data.responseJSON.message;
+        }
+    });
+}
+
+$(document).ajaxStart(function() {
+    $("title").html("LOADING ...");
+});
+</script>
+
+</div>
+				
+				<hr/>
+				<a th:href="@{/registration.html}" class="btn btn-outline-theme px-3 rounded-pill"><i class="fa fa-arrow-left me-1 ms-n1"></i> Go Back to Registration</a>
+			</div>
+			<!-- END error-page-content -->
+		</div>
+		<!-- END error -->
+		
+		<div th:include="theme/theme_util :: theme_util"></div>
+		
+	</div>
+	<!-- END #app -->
+	
+	
+	
+	
+	<div th:include="theme/footer::staticFooter"></div>	
+	
+</body>
+</html>

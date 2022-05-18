@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>QR code</title>
+
+<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+	<div id="qr">
+	    <p>Scan this Barcode using Google Authenticator app on your phone to use it later in login
+	           <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a> and 
+	           <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605">iPhone</a>
+	    </p>
+	    <br/>
+	    <p th:text="${param.qr}"></p>
+	    
+	    <img src="https://chart.googleapis.com/chart?chs=200x200&chld=M%%7C0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FSpringRegistration%3Abirolkarmaker%40gmail.com%3Fsecret%3DEOTPJ32Q6X44UI4Q%26issuer%3DNETLITEMSRegistration"/>
+	    <!-- <img th:src="${param.qr[0]}"/> -->
+	</div>
+       
+        
+    <a href="/login" class="btn btn-primary">Go to login page</a>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MESSAGING</title>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	
+	<!-- ================== BEGIN core-css ================== -->	
+	<link href="assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="assets/css/app.min.css" rel="stylesheet" />
+	<link href="assets/css/netlit_ems.css" rel="stylesheet" />
+	<link href="/assets/plugins/spectrum-colorpicker2/dist/spectrum.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->	
+
+	
+</head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app app-content-full-height">		
+		<div th:include="theme/header :: dynamicheaderFragment"></div>
+		<div th:include="theme/sidenav :: sidenav"></div>		
+		<!-- BEGIN #content -->
+		<div class="app-content">
+		
+		<ul class="breadcrumb">									
+									<li class="breadcrumb-item"><a href="#">INTERNAL COMMUNICATION</a></li>
+									<li class="breadcrumb-item active">LIVE CHAT ROOM</li>
+								</ul>
+								<hr class="mb-4" />
+					
+
+<div id="main-content" class="container">
+
+<!-- required js / css -->
+
+
+<!-- default -->
+
+
+<!-- script -->
+
+
+    
+</div>
+
+<div class="card">
+  <div class="card-header bg-none fw-bold d-flex align-items-center">
+  <i class="fa fa-circle"></i>&nbsp;Discussion group &nbsp;
+  <form class="form-inline">
+                <div class="form-group">
+                    
+                    <button id="connect" class="btn btn-outline-success btn-sm" type="submit">Join</button>
+                    <button id="disconnect" class="btn btn-outline-danger btn-sm" type="submit" disabled="disabled">Leave
+                    </button>
+                </div>
+            </form>
+  <a href="#" class="ms-auto text-muted text-decoration-none" data-toggle="card-expand"><i class="fa fa-expand"></i></a>
+  
+  </div>
+  <div  class="card-body bg-white bg-opacity-15" data-scrollbar="true" data-height="350px">
+  <table id="conversation" class="table">
+		<tr></tr>
+						
+</table>
+  
+  
+  
+</div>
+						<div class="card-footer bg-none">
+							<div class="input-group">
+								<input type="text" style="width: 80px" value="#ffe599" class="form-control btn btn-outline-default" id="colorpicker" />
+								<input type="text" class="form-control" id="message"
+									placeholder="Your Message...">
+								<button class="btn btn-outline-default" id="send" type="submit">
+									<i class="fa fa-paper-plane text-muted"></i>
+								</button>
+							</div>
+						</div>
+						
+						
+
+						<!-- card-arrow -->
+						<div class="card-arrow">
+							<div class="card-arrow-top-left"></div>
+							<div class="card-arrow-top-right"></div>
+							<div class="card-arrow-bottom-left"></div>
+							<div class="card-arrow-bottom-right"></div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+			<div class="modal fade" id="viewEmployee">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">...</div>
+				</div>
+			</div>
+
+
+
+		</div>
+		<!-- END #content -->
+		<div th:include="theme/theme_util :: theme_util"></div>		
+	</div>
+	<!-- END #app -->	
+	<!-- ================== BEGIN core-js ================== -->
+	<script src="assets/js/vendor.min.js"></script>
+	<script src="assets/js/app.min.js"></script>
+	<script src="assets/js/netlit_ems.js"></script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<!-- ================== END core-js ================== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.0/sockjs.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" ></script>
+    <script src="assets/js/websocket.js"></script>	    
+	<script src="/assets/plugins/spectrum-colorpicker2/dist/spectrum.min.js"></script>
+	<script>
+	  $('#colorpicker').spectrum({
+	    "showInput": true
+	  });
+	</script>
+</body>
+</html>

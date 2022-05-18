@@ -1,0 +1,82 @@
+<div class="modal-header">
+		<h3 class="modal-title">Complain #<span th:text="${cmp.id}"></span></h3>
+		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+	<div class="d-flex align-items-start mt-3">
+		<a href="#"> <img
+			th:src="*{'data:image/jpeg;base64,'+{cmp.image_encoded}}" alt=""
+			width="164" class="rounded" />
+		</a>
+		<div class="ms-3">
+			<h5 class="mt-0 mb-1">
+				<span th:text="${cmp.title}"></span> &nbsp;<span
+					class="badge bg-warning" th:text="${cmp.status}">Warning</span>
+			</h5>
+			@<span class="text-muted" th:text="${cmp.assign_to}">Warning</span><span></span>
+			<span th:text="${cmp.description}">msg</span>
+
+		</div>
+	</div>
+	<table class="table">
+	
+				
+		<tr >
+			<td><i class="fa fa-user"></i>[[${cmp.empname}]]</td>			
+			<td><i class="fa fa-calendar"></i> Created On: [[${cmp.created}]]</td>
+			<td><i class="fa fa-calendar"></i> Updated On: [[${cmp.updated}]]</td>
+			<td><i class="fa fa-comment"></i> [[${cmp.comments.size}]]</td>				
+		</tr>
+	</table>
+	
+	
+	<table class="table align-baseline">
+		<tr>
+			<th class="table-active" colspan="3">Comments <i class="fa fa-comment"></i> [[${cmp.comments.size}]]</th>
+		</tr>	
+		<tr th:each="comments,iterator : ${cmp.comments}">
+			<td th:text="${iterator.index+1}"></td>
+			<td colspan="2">
+				<div class="d-flex align-items-start mt-3">
+					<a href="#"> <img
+						th:src="*{'data:image/jpeg;base64,'+{comments.image_encoded}}"
+						alt="" width="64" class="rounded" />
+					</a>
+					<div class="ms-3">
+						
+							<b th:text="${comments.empname}"></b>
+						
+						@<span class="text-muted" th:text="${cmp.empname}">Warning</span><span></span>
+						<span th:text="${comments.message}">msg</span>
+
+					</div>
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			
+			<td></td>
+			<td class="col-sm-3"><img id="previewCommentImg" class="col-sm-3"></img></td>
+			<td>
+				<form action="doComment" method="post" enctype='multipart/form-data'>
+				<div class="input-group">
+					
+					<input type="hidden" name="cmpid" th:value="${cmp.id}"/>
+					<input type="file" id="commentImage" onchange="previewCommentFile(this);"  name="image_m" class="form-control"/>
+					<input type="text" placeholder="Type your Comment Here..." name="message" class="form-control" required="required"/>
+					<input class="form-control btn btn-outline-green" value="Comment"  type="submit"/>
+					
+				</div>
+				</form>
+			</td>
+			
+		</tr>
+	</table>
+
+
+	
+	
+</div>
+<div class="modal-footer">
+</div>

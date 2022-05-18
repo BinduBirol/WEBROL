@@ -1,0 +1,96 @@
+<div th:fragment="addComlaintsContent">
+	<div class="card-body">
+			<form action="doComplaints" method="post"
+				enctype='multipart/form-data'>
+				<div class="row mb-3">
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label>Title *</label> <input name="title" type="text"
+								class="form-control" required="required"
+								placeholder="Give a Title">
+						</div>
+						<!-- /.form-group -->
+					</div>
+					<!-- /.col -->
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label>Assign To</label> <select name="assign_to"
+								required="required" class="form-select" id="slct_role">
+								<option value="">Assign</option>
+								<option th:each="roles : ${roles}" th:value="${roles.name}"
+									th:text="${roles.name}"></option>
+							</select>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-12 col-sm-12">
+						<div class="form-group">
+							<label>Description *</label> <input name="description"
+								type="text" class="form-control" required="required"
+								placeholder="Describe your complain">
+						</div>
+						<!-- /.form-group -->
+					</div>
+
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label>Add Screenshot</label> <input accept="image/*"
+								name="image_m" class="form-control" type="file"
+								onchange="previewFile(this);" />
+
+						</div>
+						<!-- /.form-group -->
+					</div>
+
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label>Complaint Type</label> <select name="status"
+								class="form-select">
+								<option value="REGULAR">REGULAR</option>
+								<option value="URGENT">URGENT</option>
+								<option value="NEED MORE DISCUSSION">NEED MORE
+									DISCUSSION</option>
+							</select>
+
+						</div>
+						<!-- /.form-group -->
+					</div>
+
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-12 col-sm-12">
+						<img class="mx-auto d-block col-12 col-sm-12" id="previewImg"
+							src="" alt=" ">
+						<!-- /.form-group -->
+					</div>
+
+
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-12 col-sm-12">
+						<div class="form-group">
+							<input class="btn btn-success form-control" type="submit" />
+						</div>
+						<!-- /.form-group -->
+					</div>
+
+				</div>
+
+
+			</form>
+
+		
+		<div class="card-footer">
+			<small class="text-warning">Only image
+				file is allowed.</small>
+
+		</div>
+	</div>

@@ -1,0 +1,174 @@
+<div th:fragment="setting_content">
+	<div id="content" class="app-content">
+		<div class="row justify-content-center">
+
+			<!-- BEGIN col-10 -->
+			<div class="col-xl-10">
+				<!-- BEGIN row -->
+				<div class="row">
+					<!-- BEGIN col-9 -->
+					<div class="col-xl-9">
+
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item active">SETTINGS</li>
+						</ul>
+
+						<h1 class="page-header">Settings</h1>
+
+						<hr class="mb-4" />
+
+						<!-- BEGIN #languages -->
+						<div id="languages" class="mb-5">
+							<h4>
+								<i class="fa fa-language fa-fw text-theme"></i> Languages Setting
+							</h4>
+							<p>Language font support and auto translation enabled</p>
+							<div class="card">
+								<div class="list-group list-group-flush">
+
+									<div class="list-group-item d-flex align-items-center">
+										<div class="flex-1 text-break">
+											<div id="google_translate_element"></div>
+										</div>
+										<div>
+											<div>Auto translation</div>
+											<div class="text-white text-opacity-50 d-flex align-items-center">
+												<i class="fa fa-circle fs-8px fa-fw text-success me-1"></i>
+												Enabled
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-arrow">
+									<div class="card-arrow-top-left"></div>
+									<div class="card-arrow-top-right"></div>
+									<div class="card-arrow-bottom-left"></div>
+									<div class="card-arrow-bottom-right"></div>
+								</div>
+							</div>
+						</div>
+						<!-- END #languages -->
+						
+						<!-- BEGIN using2flogin -->
+						<div id="using2flogin" class="mb-5">
+							<h4>
+								<i class="fa fa-key fa-fw text-theme"></i> 2 Factor Authentication Setting
+							</h4>
+							<p>Google Authenticator enable/disable</p>
+							<div class="card">
+								
+								
+								
+								
+								
+								  <div th:if="${#authentication.principal.using2FA}">
+							         
+								      	<div class="list-group list-group-flush">
+	
+											<div class="list-group-item d-flex align-items-center">
+												<div class="flex-1 text-break">
+													<i class="fa fa-circle fs-8px fa-fw text-success me-1"></i>
+													You are using Two-step authentication
+												</div>
+												<div>													
+													<div class="text-white text-opacity-50 d-flex align-items-center">														
+														<a href="#" class="btn btn-outline-warning" onclick="disable2FA()">Disable 2FA</a> 
+													</div>
+												</div>
+											</div>
+										</div>
+							      
+							      </div>
+							        
+							      <div th:if="${! #authentication.principal.using2FA}">
+									<div class="list-group list-group-flush">
+	
+											<div class="list-group-item d-flex align-items-center">
+												<div class="flex-1 text-break">
+													<i class="fa fa-circle fs-8px fa-fw text-danger me-1"></i>
+													You are not using Two-step authentication
+												</div>
+												<div>													
+													<div class="text-white text-opacity-50 d-flex align-items-center">														
+														<a href="#" class="btn btn-outline-lime" onclick="enable2FA()">Enable 2FA</a>  
+													</div>
+												</div>
+											</div>
+										</div>
+								
+								</div>
+								
+								
+								
+								<div class="card-arrow">
+									<div class="card-arrow-top-left"></div>
+									<div class="card-arrow-top-right"></div>
+									<div class="card-arrow-bottom-left"></div>
+									<div class="card-arrow-bottom-right"></div>
+								</div>
+								
+								<div class="card-body" id="qr" style="display:none;">
+							          <p>Scan this Barcode using Google Authenticator app on your phone 
+							                 <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a> and 
+							                 <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605">iPhone</a>
+							          </p>
+							      </div>
+								
+							</div>
+						</div>
+						<!-- END #languages -->
+						
+
+
+					</div>
+					
+					<!-- BEGIN col-3 -->
+							<div class="col-xl-3">
+								<!-- BEGIN #sidebar-bootstrap -->
+								<nav id="sidebar-bootstrap" class="navbar navbar-sticky d-none d-xl-block">
+									<nav class="nav">
+										<a class="nav-link" href="#general" data-toggle="scroll-to">General</a>
+										<a class="nav-link" href="#notifications" data-toggle="scroll-to">Notifications</a>
+										<a class="nav-link" href="#privacyAndSecurity" data-toggle="scroll-to">Privacy and security</a>
+										<a class="nav-link" href="#payment" data-toggle="scroll-to">Payment</a>
+										<a class="nav-link" href="#shipping" data-toggle="scroll-to">Shipping</a>
+										<a class="nav-link" href="#mediaAndFiles" data-toggle="scroll-to">Media and Files</a>
+										<a class="nav-link" href="#languages" data-toggle="scroll-to">Languages</a>
+										<a class="nav-link" href="#using2flogin" data-toggle="scroll-to">2 factor authentication</a>
+										<a class="nav-link" href="#resetSettings" data-toggle="scroll-to">Reset settings</a>
+									</nav>
+								</nav>
+								<!-- END #sidebar-bootstrap -->
+							</div>
+				</div>		
+				
+			</div>			
+			
+		</div>
+		
+		
+	</div>
+	
+	<script type="text/javascript">
+		function enable2FA(){
+		    set2FA(true);
+		}
+		
+		function disable2FA(){
+		    set2FA(false);
+		}
+		
+		function set2FA(use2FA){
+		    $.post( "/user/update/2fa", { use2FA: use2FA } , function( data ) {
+		        if(use2FA){
+		        	$("#qr").append('<img src="'+data.message+'" />').show();
+		        }else{
+		            window.location.reload();
+		        }
+		    });
+		}
+	</script>
+	
+</div>
+
+

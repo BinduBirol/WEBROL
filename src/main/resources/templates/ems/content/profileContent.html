@@ -1,0 +1,414 @@
+<div th:fragment="profileContent">
+
+	<div id="content" class="app-content">
+		<div class="card">
+		
+		
+			<div class="card-body p-0">
+			
+			
+				<!-- BEGIN profile -->
+				<div class="profile">
+				
+					<!-- BEGIN profile-container -->
+					<div class="profile-container">
+						<!-- BEGIN profile-sidebar -->
+						<div class="profile-sidebar">
+							<div class="desktop-sticky-top ">
+								<div class="text-center">
+									<img class="profile-img img-thumbnail"
+										th:src="*{'data:image/jpeg;base64,'+{userdtl.emp_image_encoded}}"
+										alt="User Image" />
+										
+															
+								
+								<!-- profile info -->
+								<h4>[[${userdtl.full_name}]]</h4>
+								<div th:text="${userdtl.designation}"
+									class="mb-3 text-white text-opacity-50 fw-bold mt-n2">@johnsmith</div>
+									</div>
+								<p>[[${userdtl.employee_Type}]] employee.<br/>Contract remaining period: [[${userdtl.contact_remaining_period}]]</p>
+								
+								<div class="mb-1">
+									<i class="fa fa-id-card fa-fw text-white text-opacity-50"></i> <span
+										th:text="${userdtl.empid}"></span>
+								</div>
+
+								<div class="mb-1" >
+									<i class="fa fa-envelope fa-fw text-white text-opacity-50"></i>
+									<span th:text="${user.email}"></span>
+								</div>
+								<div class="mb-1">
+									<i class="fa fa-phone fa-fw text-white text-opacity-50"></i> <span
+										th:text="${userdtl.phone}"></span>
+								</div>
+
+								<div class="mb-3">
+									<i
+										class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i>
+									<span th:text="${userdtl.address_full}"></span>
+								</div>
+
+
+								<hr class="" />
+								<!-- 
+								<div
+									style="display: flex; justify-content: flex-end; padding: 5px;">
+									<a href="#" data-toggle="card-expand"
+										class=" text-white text-opacity-50 text-decoration-none"><i
+										class="bi bi-fullscreen"></i></a>
+
+								</div>
+								 -->
+
+							</div>
+						</div>
+
+						<!-- BEGIN profile-content -->
+						<div class="profile-content">	
+						
+										
+						
+							<ul class="nav nav-tabs">
+								<li class="nav-item me-1"><a href="#home"
+									class="nav-link active" data-bs-toggle="tab">Employment Info</a></li>
+								<li class="nav-item me-1"><a href="#personal"
+									class="nav-link" data-bs-toggle="tab">Personal Info</a></li>
+								<li class="nav-item me-1"><a href="#bank"
+									class="nav-link " data-bs-toggle="tab">Account Info</a></li>
+								<li class="nav-item me-1"><a href="#docs"
+									class="nav-link " data-bs-toggle="tab">Documents</a></li>
+								<li class="nav-item me-1"><a href="#edit"
+									class="nav-link " data-bs-toggle="tab">Edit</a></li>
+								<!-- 
+								<li class="nav-item me-1 dropdown"><a href="#"
+									class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+										Dropdown </a>
+									<div class="dropdown-menu">
+										<a href="#dropdown1" class="dropdown-item"
+											data-bs-toggle="tab">@fat</a> <a href="#dropdown2"
+											class="dropdown-item" data-bs-toggle="tab">@mdo</a>
+									</div>
+								</li>
+								-->							
+								
+							</ul>
+							
+							<div class="tab-content pt-3">
+									<div class="tab-pane fade show active" id="home">
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>Full Name:</td>
+													<td th:text="${userdtl.full_name}"></td>
+												</tr>
+												
+												<tr>
+													<td>Work Phone Number:</td>
+													<td th:text="${userdtl.phone}"></td>
+												</tr>
+												
+												<tr>
+													<td>Work Email:</td>
+													<td th:text="${userdtl.email}"></td>
+												</tr>
+												
+												<tr>
+													<td>Designation:</td>
+													<td th:text="${userdtl.designation}"></td>
+												</tr>
+												
+												<tr>
+													<td>Contract Start:</td>
+													<td th:text="${userdtl.contract_start}"></td>
+												</tr>
+												
+												<tr>
+													<td>Contract End:</td>
+													<td th:text="${userdtl.contract_end}"></td>
+												</tr>												
+												
+												
+												<tr>
+													<td>Workspace:</td>
+													<td th:text="${userdtl.workspace}" ></td>
+												</tr>									
+												
+												
+												<tr>
+													<td>Nearest Chief:</td>
+													<td th:text="${userdtl.nearest_chief}"></td>
+												</tr>
+												
+												<tr>
+													<td>Employee Type:</td>
+													<td th:text="${userdtl.employee_Type}"></td>
+												</tr>
+												
+												<tr>
+													<td>Added By:</td>
+													<td th:text="${userdtl.added_by}"></td>
+												</tr>
+												
+											</table>
+										
+										</div>
+	
+									</div>
+									<div class="tab-pane fade" id="personal">
+										
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>First Name:</td>
+													<td th:text="${userdtl.first_name}"></td>
+												</tr>
+												<tr>
+													<td>Last Name:</td>
+													<td th:text="${userdtl.last_name}"></td>
+												</tr>
+												<tr>
+													<td>Address:</td>
+													<td th:text="${userdtl.address_full}"></td>
+												</tr>
+												<tr>
+													<td>Evening Phone:</td>
+													<td th:text="${userdtl.phone_eve}"></td>
+												</tr>
+												<tr>
+													<td>Private Email:</td>
+													<td th:text="${userdtl.private_email}"></td>
+												</tr>
+												<tr>
+													<td>Closest Relative Full Description:</td>
+													<td th:text="${userdtl.closest_relative_full}"></td>
+												</tr>
+												<tr>
+													<td>Social Security Number:</td>
+													<td th:text="${userdtl.social_security_number}"></td>
+												</tr>
+												<tr>
+													<td>Gender</td>
+													<td th:text="${userdtl.sex}"></td>
+												</tr>
+												
+											</table>
+										</div>
+									
+										
+									</div>
+									
+									<div class="tab-pane fade" id="bank">
+										<div class="profile-content-container">
+											<table class="table">
+												<tr>
+													<td>Bank Name:</td>
+													<td th:text="${userdtl.bank_name}"></td>
+												</tr>
+												
+												<tr>
+													<td>Account Number:</td>
+													<td th:text="${userdtl.account_number}"></td>
+												</tr>
+												
+												<tr>
+													<td>Clearing Number:</td>
+													<td th:text="${userdtl.clearing_number}"></td>
+												</tr>
+												
+												<tr>
+													<td>Table Tax:</td>
+													<td th:text="${userdtl.table_tax}" ></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									
+									<div class="tab-pane fade" id="docs">
+										<div class="profile-content-container">
+											
+										</div>
+									</div>
+									<div class="tab-pane fade" id="edit">
+										<div class="profile-content-container">
+											<div class="accordion" id="accordionExample">
+											<div class="alert alert-warning">												
+												<small class="img_size_warning">Only .pdf file allowed for CV and Certificates. Photo can be uploaded as ID copy.
+											</small>
+											</div>											
+											<form id="personalinfoform" action="savePersonalInfo" method="post" enctype='multipart/form-data'>
+											  <div class="accordion-item">
+											    <h2 class="accordion-header" id="headingOne">
+											      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+											        Edit Personal Information
+											      </button>
+											    </h2>
+											    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+											      <div class="accordion-body">
+											      	
+												<table class="table">
+													<tr>
+														<td>Profile picture</td>
+														<td><input accept="image/*" name="emp_image_m" class="form-control" type="file" onchange="previewFile(this);"/></td>
+													</tr>
+													
+													<tr>
+														<td>First Name</td>
+														<td>
+															<input class="form-control" name="first_name" th:value="${userdtl.first_name}"/>
+															<input type="hidden" class="form-control" readonly="readonly" name="empid" th:value="${userdtl.empid}"/>
+														</td>
+													</tr>
+													
+													<tr>
+														<td>Last Name</td>
+														<td><input class="form-control" name="last_name" th:value="${userdtl.last_name}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Private Email</td>
+														<td><input name="private_email" type="email" class="form-control" th:value="${userdtl.private_email}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Closest Relative Full Description</td>
+														<td><input name="closest_relative_full" class="form-control" th:value="${userdtl.closest_relative_full}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Full Address</td>
+														<td><input name="address_full" class="form-control" th:value="${userdtl.address_full}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Evening Phone</td>
+														<td><input name="phone_eve" class="form-control" th:value="${userdtl.phone_eve}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Social Security Number</td>
+														<td><input name="social_security_number" placeholder="YYYYMMDD-XXXX" class="form-control" th:value="${userdtl.social_security_number}"/></td>
+													</tr>
+													
+													<tr>
+														<td>Gender</td>
+														<td><select th:field="*{userdtl.sex}" name="sex" class="form-select" >
+											                 	<option value="">Select</option>                 	
+											                 	<option value="Male">Male</option>
+											                 	<option value="Female">Female</option>
+											                 	<option value="Other">Other</option>
+											                 	
+											                 </select>
+											              </td>
+													</tr>											
+													
+													
+												</table>
+											
+											      </div>
+											    </div>
+											  </div>
+											  
+											  
+											  <div class="accordion-item">
+											  	
+											    <h2 class="accordion-header" id="headingTwo">
+											      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+											        Edit Bank Information
+											      </button>
+											    </h2>
+											    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+											      <div class="accordion-body">
+											      	<table class="table">
+														<tr>
+															<td>Bank Name</td>
+															<td><input th:value="${userdtl.bank_name}" name="bank_name" type="text" class="form-control"  placeholder="Enter Bank Name"></td>
+														</tr>
+														
+														<tr>
+															<td>Account Number</td>
+															<td><input th:value="${userdtl.account_number}" name="account_number" type="text" class="form-control"   placeholder="Enter Bank Account Number"></td>
+														</tr>
+														
+														<tr>
+															<td>Clearing Number</td>
+															<td><input th:value="${userdtl.clearing_number}" name="clearing_number" type="text" class="form-control"  placeholder="Enter Clearing Number"></td>
+														</tr>
+														
+														<tr>
+															<td>Table Tax</td>
+															<td><input th:value="${userdtl.table_tax}" name="table_tax" type="text" class="form-control"   placeholder="Enter Table Tax"></td>
+														</tr>
+														
+													</table>
+											      </div>
+											    </div>
+											  </div>
+											  
+											  <div class="accordion-item">
+											    <h2 class="accordion-header" id="headingThree">
+											      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+											        Upload Documents
+											      </button>
+											    </h2>
+											    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+											      <div class="accordion-body">
+											      	<table	class="table">
+											      		<tr>
+											      			<td>CV</td>
+											      			<td><input name="doc_m_cv"  accept="application/pdf"  type="file" class="form-control"  placeholder="Enter CV"></td>
+											      		</tr>
+											      		
+											      		<tr>
+											      			<td>ID Copy</td>
+											      			<td><input name="doc_m_id"  accept="image/jpeg,image/png,application/pdf"  type="file" class="form-control"   placeholder="Enter ID copy"></td>
+											      		</tr>
+											      		
+											      		<tr>
+											      			<td>Certificate</td>
+											      			<td><input name="doc_m_crt"  accept="application/pdf"  type="file" class="form-control"   placeholder="Enter Certificate copy"></td>
+											      		</tr>
+											      		
+											      		<tr>
+											      			<td>Others</td>
+											      			<td><input name="doc_m_others"  accept="application/pdf"  type="file" class="form-control"  placeholder="Enter CV"></td>
+											      		</tr>
+											      	
+											      	</table>
+											      </div>
+											    </div>
+											  </div>
+											  <br/>
+												<div>
+													<input type="submit"  class="btn btn-info form-control" value="Save Info"/>
+												</div>
+											  </form>
+											</div>
+											
+											
+										
+										</div>
+									</div>
+								</div>
+							
+						</div>
+
+					</div>
+					<!-- END profile-sidebar -->
+
+
+
+				</div>
+			</div>
+			<!-- BEGIN card-arrow -->
+			<div class="card-arrow">
+				<div class="card-arrow-top-left"></div>
+				<div class="card-arrow-top-right"></div>
+				<div class="card-arrow-bottom-left"></div>
+				<div class="card-arrow-bottom-right"></div>
+			</div>
+			<!-- END card-arrow -->
+		</div>
+	</div>
+</div>
+

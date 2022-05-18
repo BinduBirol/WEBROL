@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Dashboard</title>
+</head>
+<body>
+	
+	<div class="container">
+		<div th:if="${message != null}" class="alert alert-info" th:utext="${message}">message</div>
+		
+	    <h1>This is the landing page for the admin</h1>
+	    
+	    <div sec:authorize="hasAuthority('READ_PRIVILEGE')">This text is only visible to a user (READ_PRIVILEGE)</div>
+	          
+	    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')"> This text is only visible to an admin (WRITE_PRIVILEGE)</div>
+	    
+	      <a class="btn btn-default" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
+	      <br/>
+	      <a class="btn btn-default" th:href="@{/changePassword.html}" th:utext="#{message.changePassword}">change password</a>
+	      <br/>
+	      <br/>
+	      <br/>
+	      
+	      <div th:if="${#authentication.principal.using2FA}">
+	        You are using Two-step authentication <a href="#" class="btn btn-primary" onclick="disable2FA()">Disable 2FA</a> 
+	      </div>
+	        
+	      <div th:if="${! #authentication.principal.using2FA}">
+	        You are not using Two-step authentication <a href="#" class="btn btn-primary" onclick="enable2FA()">Enable 2FA</a> 
+	      </div>
+	      
+	      <br/>
+	      <div id="qr" style="display:none;">
+	          <p>Scan this Barcode using Google Authenticator app on your phone 
+	                 <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a> and 
+	                 <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605">iPhone</a>
+	          </p>
+	      </div>
+	      
+	      <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')" th:utext="#{label.pages.user.message}">user</div>
+	
+	    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')" th:utext="#{label.pages.admin.message}"></div>
+	     
+	    <p th:if="${param.user} != null" th:text="${param.user[0]}">user</p>
+	     
+	    <a class="btn btn-default" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
+		<br /> <br />
+	    <a th:href="@{/loggedUsers}" th:utext="#{label.pages.users.message}">View logged in users</a>
+		<br />	    
+	    <a th:href="@{/loggedUsersFromSessionRegistry}" th:utext="#{label.pages.users.sessionregistry.message}">View logged in users</a>
+  </div>
+
+</body>
+</html>

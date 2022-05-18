@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="theme/header :: staticheaderFragment"></head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">		
+		<div class="error-page">
+			<!-- BEGIN error-page-content -->
+			<div class="error-page-content">
+				<div class="card mb-5 mx-auto" >
+					<div class="card-body">
+						<div class="card">
+							<div class="error-code">Hello!!</div>
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
+					</div>
+				</div>
+				<h1 th:text="${session.user.email}" >user!</h1>			
+				<h3 th:text="${param.message}">msg</h3>
+				<h3 th:if="${message != null}" th:utext="${message}">msg</h3>
+				<hr/>
+				<p class="mb-1">
+					Here are some helpful links:
+				</p>
+				<p class="mb-5">
+					<a href="/dashboard" class="text-decoration-none text-white text-opacity-50">Dashboard</a>					
+					<span class="link-divider"></span>					
+					<a href="/calendar" class="text-decoration-none text-white text-opacity-50">Calendar</a>
+					<span class="link-divider"></span>
+					<a href="/settings" class="text-decoration-none text-white text-opacity-50">Settings</a>
+					<span class="link-divider"></span>
+					<a href="/changePassword" class="text-decoration-none text-white text-opacity-50">Change Password</a>					
+				</p>
+				<a href="/logout" class="btn btn-outline-theme px-3 rounded-pill"><i class="fa fa-arrow-left me-1 ms-n1"></i> Go to Login Page</a>
+			</div>
+			<!-- END error-page-content -->
+		</div>
+		<!-- END error -->
+      
+  </div>
+		<!-- END #content -->
+		<div th:include="theme/theme_util :: theme_util"></div>		
+	</div>
+	<!-- END #app -->	
+	<div th:include="theme/footer::staticFooter"></div>	
+</body>
+</html>
+
+
+
+
+

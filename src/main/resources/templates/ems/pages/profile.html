@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="theme/header :: staticheaderFragment"></head>
+<body>
+	<!-- BEGIN #app -->
+	<div id="app" class="app">		
+		<div th:include="theme/header :: dynamicheaderFragment"></div>
+		<div th:include="theme/sidenav :: sidenav"></div>		
+		<!-- BEGIN #content -->
+		<div th:include="ems/content/profileContent :: profileContent"></div>
+		<!-- END #content -->
+		<div th:include="theme/theme_util :: theme_util"></div>	
+	</div>
+	<!-- END #app -->	
+	<div th:include="theme/footer::staticFooter"></div>
+	<script>
+		
+		$("#personalinfoform").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				url : $(this).attr("action"),
+				type : $(this).attr("method"),
+				//dataType: "JSON",
+				data : new FormData(this),
+				processData : false,
+				contentType : false,
+				success : function(data, status) {					
+					$('.toast-header .title').html(status);
+					$('.toast-body .toast-message').html(data);					
+					$('.toast').toast('show');					
+					if (data.indexOf("Successfully") == -1) {
+						//location.reload();
+					}
+				},
+				error : function(xhr, desc, err) {
+					$('.toast-header .title').html("Error");
+					$('.toast-body .toast-message').html(xhr.responseText);					
+					$('.toast').toast('show');
+
+				}
+			});
+
+		});
+
+		function previewFile(input) {
+			var file = $("input[type=file]").get(0).files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function() {
+					$(".profile-img").attr("src", reader.result);
+				}
+				reader.readAsDataURL(file);
+			}
+		}
+	</script>
+</body>
+</html>

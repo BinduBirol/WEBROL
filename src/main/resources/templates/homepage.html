@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="theme/header :: staticheaderFragment"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:include="theme/header :: dynamicheaderFragment"></div>
+		<div th:include="theme/sidenav :: sidenav"></div>
+		<!-- BEGIN #content -->
+		<div th:include="ems/content/dashboard :: dashboard"></div>
+		<!-- END #content -->
+		<div th:include="theme/theme_util :: theme_util"></div>
+		<div th:include="theme/footer::appFooter"></div>
+		<div th:include="theme/footer::staticFooter"></div>
+	</div>
+	<!-- END #app -->
+	
+</body>
+</html>

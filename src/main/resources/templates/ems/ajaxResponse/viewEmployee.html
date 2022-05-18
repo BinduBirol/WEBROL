@@ -1,0 +1,25 @@
+
+	<div class="modal-header">
+		<h3 class="modal-title" th:text="${userdtl.full_name}"></h3>&nbsp;&nbsp;
+		<a type="button" th:href="@{/editEmployee(empid=${userdtl.empid})}" ><i class="fa fa-edit"></i></a>
+		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+	</div>
+	<div class="modal-body">
+		<div th:include="ems/content/viewEmpContent :: viewEmpContent"></div>
+	</div>
+	<div class="modal-footer">
+		<button type="button"  th:if="${userdtl.email} != ${session.user.email}" onclick="deleteEmployee()" class="btn btn-link text-danger">Delete this Employee?</button>    
+        <span style="display: none" id="finaldelete">
+        Are you Sure?
+        <a  type="button" th:href="@{/deleteEmployee(empid=${userdtl.empid})}" class="btn btn-outline-danger">Yes</a>
+        </span>
+        <button type="button" class="btn btn-outline-default" data-bs-dismiss="modal">Close</button>
+     </div>     
+     <script>
+     	function deleteEmployee() {
+			//alert(1);
+			//this.hide();
+			$("#finaldelete").show();
+		}
+     
+     </script>
